@@ -2,14 +2,9 @@ name: Deploy Docker image to GitHub Container Registry
 
 on:
   push:
-    tags:
-      - 'v*'
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: 'Tag for the Docker image (e.g., v1.0.0)'
-        required: true
-
+    branches:
+      - main
+      
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -17,7 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: master
+          ref: main
         
 
       - name: Set tag name
