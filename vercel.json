@@ -2,20 +2,13 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
       "src": "index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
-    { "src": "^/configure/(.*)", "dest": "/$1" },
-    { "src": "^/configure$", "dest": "/index.html" },
+    { "src": "^/configure/(.*)", "dest": "/index.js" },
+    { "src": "^/configure$", "dest": "/index.js" },
     { "src": "^(.*)/manifest\\.json$", "dest": "/index.js" },
     { "src": "^(.*)/request_token$", "dest": "/index.js" },
     { "src": "/(.*)", "dest": "/index.js" }
